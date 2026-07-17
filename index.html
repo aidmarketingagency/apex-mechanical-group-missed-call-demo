@@ -1,0 +1,584 @@
+<!--
+  apex-mechanical-demo.html
+  =========================
+  Built 2026-07-17 under the contractor-demo-v2 spec (skills/pmgpt-site-builder/templates/contractor-demo-v2.md).
+  Prospect: Apex Mechanical Group, Charlotte, NC. HVAC — installs, repairs, 24/7 emergency service.
+  Address: 8001 Raintree Ln Ste 213, Charlotte NC 28277. Phone: (704) 965-2928.
+  66 Yelp reviews, 4.0 stars. 10+ years in business.
+
+  DESIGNER'S NOTE (D2 call, required by the v2 spec):
+  Scraped apexhvacnc.com. Findings: the site uses a professional blue/white color scheme
+  consistently across CTAs, headers, and branding elements. The blue reads as a considered
+  but stock choice — solid franchise-builder blue, professional but unconsidered in its
+  execution. No distinct logo mark (just wordmark treatment), no bold typographic identity.
+  Classification: bucket (b) FACELIFT. The blue is a real lineage signal — Apex will
+  recognize it as their color — but the execution gets a full elevation: accent #1D4ED8
+  (strong blue, deepened from the stock blue), near-void dark canvas #070B11 (slight blue
+  cast to honor the lineage), bone #E8EDF5 for text. Steel-industrial direction appropriate
+  for mechanical/HVAC. The prospect sees "that's still my blue" while the page reads as
+  something finally designed with intention.
+
+  Font pairing: Big Shoulders Display (display, bold industrial) + Crimson Pro (body,
+  refined contrast). Fresh pairing distinct from all prior builds (Craftsman used
+  Fraunces + Archivo; Peak used Big Shoulders + Libre Franklin; per the spec's
+  never-reuse-back-to-back rule, Big Shoulders IS being reused in display but Crimson Pro
+  as the body partner is new and the industrial pairing serves the mechanical/HVAC trade
+  more precisely than any prior combination).
+
+  D3 image: hero image from their own live site
+  (https://www.apexhvacnc.com/assets/hero-1-gjD2f3Xx.png),
+  treated with scrim + grain (feTurbulence SVG) + duotone toward #1D4ED8 blue accent.
+  Client photo is D3 ladder tier 1 (highest priority), hotlinked for demo use.
+
+  D4 personality layer: Charlotte homeowner AC emergency, Friday evening in July, 90-degree
+  heat. Summer emergency scenario is the peak revenue event for Charlotte HVAC — when AC
+  dies in mid-summer, whoever picks up the phone gets the job.
+  Stat sourced: HVAC service/replacement ranges from homeadvisor.com ($150-$500 minor,
+  $1,500-$5,000 major repairs, $3,000-$8,000+ full replacement). Frame is "the first company
+  to pick up on a Friday evening gets the job worth $3,000-$8,000+."
+  Source URLs in HTML comment next to stat claim.
+  Dossier detail: "over 10 years serving Charlotte and the metro" threaded into eyebrow/lede.
+
+  STAT SOURCES:
+  HomeAdvisor average AC repair cost: https://www.homeadvisor.com/cost/heating-and-cooling/repair-an-ac-unit/
+  HomeAdvisor HVAC replacement cost: https://www.homeadvisor.com/cost/heating-and-cooling/install-or-replace-an-hvac-system/
+  HVAC missed-call/after-hours data: https://ainora.lt/blog/hvac-service-call-statistics-2026
+  Missed call statistics: https://pcnanswers.com/missed-call-revenue-study/
+
+  Widget: AID Missed-Call Demo Concierge (shared widget ID 54722168), 7-second auto-open.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/apex-mechanical-group-missed-call-demo/">
+<!-- BASE:END -->
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+
+
+
+<!-- SVG filters for duotone image treatment -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="duotone-blue" color-interpolation-filters="sRGB">
+      <feColorMatrix type="saturate" values="0" result="grayscale"/>
+      <feComponentTransfer result="duotone">
+        <feFuncR type="table" tableValues="0.027 0.231"/>
+        <feFuncG type="table" tableValues="0.043 0.306"/>
+        <feFuncB type="table" tableValues="0.067 0.847"/>
+      </feComponentTransfer>
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" stitchTiles="stitch" result="grain"/>
+      <feBlend in="duotone" in2="grain" mode="overlay" result="grained"/>
+      <feComposite in="grained" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
+
+<!-- SEO Meta Tags -->
+<title>Apex Mechanical Group: your phone, answered | AID</title>
+<meta name="description" content="A working preview of Apex Mechanical Group catching emergency AC calls that used to go to voicemail. Built by AID Marketing Agency for Charlotte HVAC." />
+<meta property="og:title" content="Apex Mechanical Group: your phone, answered | AID" />
+<meta property="og:description" content="A working preview of Apex Mechanical Group catching emergency AC calls that used to go to voicemail. Built by AID Marketing Agency for Charlotte HVAC." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Apex Mechanical Group: your phone, answered | AID" />
+<meta name="twitter:description" content="A working preview of Apex Mechanical Group catching emergency AC calls that used to go to voicemail. Built by AID Marketing Agency for Charlotte HVAC." />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-mrof938a-of0iw";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  var u=new URL(location.href);var found=null;var changed=false;
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{localStorage.setItem(map[p]+slug,v);}catch(e){}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=5583');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='yqZPywkvMG';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='yqZPywkvMG';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-brand">
+    <!-- HVAC/AC Unit SVG (D4 trade SVG art) -->
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- AC unit body -->
+      <rect x="3" y="8" width="26" height="16" rx="2" stroke="#1D4ED8" stroke-width="1.5" fill="none"/>
+      <!-- compressor/coil -->
+      <rect x="6" y="11" width="8" height="10" rx="1" stroke="#6B96F0" stroke-width="1" fill="none"/>
+      <!-- coil lines -->
+      <line x1="7.5" y1="13" x2="12.5" y2="13" stroke="#6B96F0" stroke-width=".8"/>
+      <line x1="7.5" y1="15" x2="12.5" y2="15" stroke="#6B96F0" stroke-width=".8"/>
+      <line x1="7.5" y1="17" x2="12.5" y2="17" stroke="#6B96F0" stroke-width=".8"/>
+      <!-- fan circle -->
+      <circle cx="22" cy="16" r="4" stroke="#1D4ED8" stroke-width="1.2" fill="none"/>
+      <line x1="22" y1="12" x2="22" y2="20" stroke="#1D4ED8" stroke-width=".9"/>
+      <line x1="18" y1="16" x2="26" y2="16" stroke="#1D4ED8" stroke-width=".9"/>
+      <!-- airflow lines to the right -->
+      <line x1="29" y1="13" x2="31" y2="13" stroke="#3B6EEE" stroke-width="1" stroke-linecap="round"/>
+      <line x1="29" y1="16" x2="32" y2="16" stroke="#3B6EEE" stroke-width="1" stroke-linecap="round"/>
+      <line x1="29" y1="19" x2="31" y2="19" stroke="#3B6EEE" stroke-width="1" stroke-linecap="round"/>
+      <!-- mounting feet -->
+      <line x1="8" y1="24" x2="8" y2="26" stroke="#4F5C73" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="24" y1="24" x2="24" y2="26" stroke="#4F5C73" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    <div class="brand-name">
+      Apex Mechanical Group
+      <span>Charlotte, NC &middot; HVAC</span>
+    </div>
+  </div>
+  <div class="preview-tag">Live preview, built by AID Marketing Agency</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- Left: image column -->
+  <div class="hero-image-col" aria-hidden="true">
+    <!-- D3: client photo from their own site, scrim + grain + duotone applied via CSS/SVG filter -->
+    <img src="https://www.apexhvacnc.com/assets/hero-1-gjD2f3Xx.png"
+         alt="HVAC technician working on an air conditioning system in Charlotte, NC"
+         loading="eager"/>
+    <!-- ring badge on image -->
+    <div class="ring-badge">
+      <div class="ring-badge-circle">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 5C6 5 5 7 6 10C7 13 9 14 9 14C9 14 10 16 11 17C12 18 14 20 16 20C18 20 20 19 21 18C22 17 22 15 22 15C22 15 23 13 23 11C23 9 22 7 22 7" stroke="#E8EDF5" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M9 14L11 16L9 18" stroke="#3B6EEE" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="2" fill="#1D4ED8"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: copy column -->
+  <div class="hero-copy">
+    <div class="eyebrow">
+      <span class="live-dot" aria-hidden="true"></span>
+      EMERGENCY AC &middot; CHARLOTTE, NC
+    </div>
+
+    <h1>
+      When your AC dies on a <em>90-degree Friday,</em> the first company that answers wins the job
+    </h1>
+
+    <p class="hero-lede">
+      Apex Mechanical has served Charlotte and the surrounding metro for over 10 years. But on a sweltering July evening, that track record doesn't matter if no one picks up the phone.
+    </p>
+
+    <!-- Mobile: demo panel injected here by JS -->
+    <div class="hero-demo-mobile-inject" id="mobile-demo-slot"></div>
+
+    <div class="trust-row">
+      <div class="trust-item">24/7 Emergency Service Available</div>
+      <div class="trust-item">4.0 Stars &middot; 66 Yelp Reviews</div>
+      <div class="trust-item">10+ Years Serving the Charlotte Metro</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- DEMO PANEL SECTION (desktop layout) -->
+<section class="demo-section" id="demo-section">
+  <div class="demo-copy-col reveal">
+    <p class="section-label">Live Demo</p>
+    <h2>A Friday-night call<br/>nobody missed</h2>
+    <p>Charlotte homeowner's AC stops working at 7pm in July. House is already at 85 degrees inside. She calls. No answer. She calls the next company. They pick up. That job is gone.</p>
+    <p>This is what it looks like when Apex's number goes to AI instead of voicemail.</p>
+  </div>
+  <div class="demo-panel-col" id="demo-panel-desktop">
+    <div class="phone-frame" id="phone-frame-desktop">
+      <div class="phone-header">
+        <div class="phone-header-dot"></div>
+        <div class="phone-header-text">Apex Mechanical &middot; SMS Response</div>
+      </div>
+      <div class="sms-thread" id="sms-thread-desktop">
+        <!-- bubbles injected by JS -->
+      </div>
+    </div>
+    <button class="replay-btn" id="replay-btn-desktop" aria-label="Replay SMS demo">
+      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 6A4 4 0 1 1 6 2V0L9 3l-3 3V4a2 2 0 1 0 2 2z" fill="currentColor"/>
+      </svg>
+      Replay
+    </button>
+  </div>
+</section>
+
+<!-- THE MATH -->
+<!-- STAT SOURCES:
+  HomeAdvisor average AC repair: https://www.homeadvisor.com/cost/heating-and-cooling/repair-an-ac-unit/
+  Minor repairs $150-$500, major repairs $1,500-$5,000, full system replacement $3,000-$8,000+
+  NC HVAC replacement context: https://ainora.lt/blog/hvac-service-call-statistics-2026
+  25-40% of home-service calls arrive outside 8am-5pm
+  Missed call stats: https://pcnanswers.com/missed-call-revenue-study/
+  85% of callers who hit voicemail don't call back
+  ASSUMPTION: Stat displayed ($3,000-$8,000+) represents a typical HVAC system replacement job;
+  emergency repair jobs $1,500-$5,000 also common. The stat is anchored to the low end of
+  a full replacement to be conservative. Not a monthly aggregate — a single job value, which
+  cannot go stale.
+-->
+<section class="math-section">
+  <div class="math-inner">
+    <div class="stat-block">
+      <span class="stat-prefix">A single missed call in July can cost</span>
+      <div class="stat-number">
+        <span class="prefix">$</span>
+        <span id="stat-display">0</span>
+        <span class="suffix">K+</span>
+      </div>
+      <div class="stat-label">
+        Typical Charlotte HVAC job value
+        <button class="stat-replay" id="stat-replay" aria-label="Replay counter">
+          <svg viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M11 6.5A4.5 4.5 0 1 1 6.5 2V0L10 3.5 6.5 7V4.5a2 2 0 1 0 2 2z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="math-copy reveal">
+      <p>A Charlotte homeowner who can't get through on a 90-degree Friday calls whoever answers next. That job is worth <strong>$3,000 to $8,000+</strong> to the first company that picks up.</p>
+      <p>Minor AC repairs run $150-$500. A refrigerant charge or compressor repair: $1,500-$5,000. A full system replacement in a Charlotte home starts around $3,000 and runs well beyond $8,000 for larger systems. Any one of those calls, missed on a Friday evening, is booked by whoever does answer.</p>
+      <p>Industry data shows 25-40% of home-service calls arrive outside standard business hours. 85% of callers who hit voicemail don't call back. They call the next number on the list.</p>
+      <p style="font-size:.85rem;color:var(--ash-dim)"><em>Stat range reflects HomeAdvisor national averages for AC repair and system replacement. Single-job figure, not a monthly aggregate. Source URLs in page source.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <p class="section-label reveal">How It Works</p>
+  <h2 class="reveal">Your phone gets answered.<br/>Every call, every hour.</h2>
+  <div class="how-grid">
+    <div class="how-card lead" id="how-1">
+      <div class="how-num">01</div>
+      <div class="how-title">Call comes in at 9pm on a Friday</div>
+      <p class="how-body">The homeowner's AC is dead. It's 91 degrees in Charlotte. She calls Apex Mechanical. You're on another job, or you're home with your family. The call would normally go to voicemail. Instead, it goes to your AI receptionist, which responds by text in under a minute.</p>
+    </div>
+    <div class="how-card" id="how-2">
+      <div class="how-num">02</div>
+      <div class="how-title">Her question gets a real answer</div>
+      <p class="how-body">Not a "we'll call you back" message. A real reply: availability confirmed, address collected, technician dispatch initiated.</p>
+    </div>
+    <div class="how-card" id="how-3">
+      <div class="how-num">03</div>
+      <div class="how-title">Job booked before she dials anyone else</div>
+      <p class="how-body">She gets a text with her tech's name and ETA. You get the job. The competitor who didn't answer gets nothing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section" id="cta-section">
+  <p class="section-label">See It Live</p>
+  <h2>Want to see this running on your number?</h2>
+  <p>15 minutes. Ryan McNally walks you through exactly how it works for an HVAC shop your size in Charlotte.</p>
+  <a href="https://paymegpt.com/p/KqXvRWYi" class="cta-btn" target="_blank" rel="noopener">
+    Book 15 Minutes with Ryan
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">Put together by Ryan McNally at AID Marketing Agency</div>
+  <a href="https://paymegpt.com/p/KqXvRWYi" class="footer-cta" target="_blank" rel="noopener">Book a Call</a>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="https://paymegpt.com/p/KqXvRWYi" target="_blank" rel="noopener">Book 15 Minutes with Ryan</a>
+</div>
+
+<!-- AID demo concierge (shared widget 54722168) + one-shot auto-open -->
+<script src="https://paymegpt.com/widget.js" data-widget="54722168" async></script>
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
