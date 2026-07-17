@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aidmarketingagency.github.io/apex-mechanical-group-missed-call-demo/sitemap.xml
